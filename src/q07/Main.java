@@ -4,19 +4,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) a[i] = sc.nextInt();
 
-        // TODO: Read n integers into an array
-        //       Implement BUBBLE SORT manually (no Arrays.sort)
-        //       Print sorted array ascending, space-separated
-        //       Then print: "Swaps: X" where X = total number of swaps performed
-        //
-        // Input:
-        // 5
-        // 64 34 25 12 22
-        //
-        // Output:
-        // 12 22 25 34 64
-        // Swaps: 7
+        int swaps = 0;
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - 1 - i; j++)
+                if (a[j] > a[j + 1]) {
+                    int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t;
+                    swaps++;
+                }
 
+        for (int i = 0; i < n; i++) {
+            System.out.print(a[i]);
+            if (i < n - 1) System.out.print(" ");
+        }
+        System.out.println();
+        System.out.print("Swaps: " + swaps);
     }
 }
